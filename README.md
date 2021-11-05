@@ -10,11 +10,16 @@ Terraform module to create and manage Scaleway Loadbalancers.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
+| <a name="requirement_scaleway"></a> [scaleway](#requirement\_scaleway) | ~> 2.0 |
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_scaleway"></a> [scaleway](#provider\_scaleway) | ~> 2.0 |
 
 ## Modules
 
@@ -22,13 +27,22 @@ No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [scaleway_lb.this](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/lb) | resource |
+| [scaleway_lb_ip.this](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/lb_ip) | resource |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_loadbalancers"></a> [loadbalancers](#input\_loadbalancers) | The Scaleway Load Balancers configurations | `map(any)` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | Region to be used with the Scaleway provider | `string` | `"fr-par"` | no |
+| <a name="input_zone"></a> [zone](#input\_zone) | Zone to be used with the Scaleway provider | `string` | `"fr-par-1"` | no |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_this"></a> [this](#output\_this) | The Scaleway Load Balancer resources |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
