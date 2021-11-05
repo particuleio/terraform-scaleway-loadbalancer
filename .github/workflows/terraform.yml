@@ -1,5 +1,5 @@
 ---
-name: 'terraform-workflow'
+name: 'terraform-scaleway-loadbalancer'
 
 on:
   push:
