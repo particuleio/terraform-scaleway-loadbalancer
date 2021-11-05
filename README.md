@@ -1,6 +1,6 @@
-# terraform-module-template
+# terraform-scaleway-loadbalancer
 
-Repository template for Particule's Terraform module.
+Terraform module to create and manage Scaleway Loadbalancers.
 
 ## Usage
 
