@@ -11,6 +11,7 @@ output "this" {
       ]
     }
   }
+  description = "Map of every Load Balancer configuration: LBs, LB IPs, Backends"
 }
 
 output "loadbalancers" {
