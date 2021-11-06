@@ -45,5 +45,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_this"></a> [this](#output\_this) | The Scaleway Load Balancer resources |
+| <a name="output_loadbalancer_backends"></a> [loadbalancer\_backends](#output\_loadbalancer\_backends) | The Scaleway Load Balancer Backends |
+| <a name="output_loadbalancers"></a> [loadbalancers](#output\_loadbalancers) | The Scaleway Load Balancer resources |
+| <a name="output_this"></a> [this](#output\_this) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
