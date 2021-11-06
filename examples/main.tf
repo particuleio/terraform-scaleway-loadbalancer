@@ -7,6 +7,7 @@ module "loadbalancers" {
       name = "default-lb"
       backends = [
         {
+          name             = "sample-test"
           forward_port     = 80
           forward_protocol = "http"
         }
