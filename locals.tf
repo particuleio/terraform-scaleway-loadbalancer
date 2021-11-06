@@ -1,7 +1,7 @@
 locals {
   default_loadbalancer = {
     type = "LB-S"
-    tags = {}
+    tags = []
   }
 
   loadbalancers = {

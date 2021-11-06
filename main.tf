@@ -13,5 +13,5 @@ resource "scaleway_lb" "this" {
   zone       = lookup(each.value, "zone", null)
   project_id = lookup(each.value, "project_id", null)
 
-  tags = lookup(each.value, "tags", null)
+  tags = each.value.tags
 }
