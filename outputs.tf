@@ -3,7 +3,7 @@ output "this" {
     for loadbalancer, config in local.loadbalancers :
     loadbalancer => {
       lb    = scaleway_lb.this[loadbalancer]
-      lb_ip = scaleway_lb_ip.this[loadbalancer]
+      lb_ip = config.create_ip ? scaleway_lb_ip.this[loadbalancer] : data.scaleway_lb_ip.this[loadbalancer]
 
       backends = [
         for backend in config.backends :

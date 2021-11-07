@@ -1,11 +1,15 @@
 resource "scaleway_lb_ip" "this" {
-  for_each = local.loadbalancers
+  for_each = {
+    for loadbalancer, config in local.loadbalancers :
+    loadbalancer => config
+    if config.create_ip
+  }
 }
 
 resource "scaleway_lb" "this" {
   for_each = local.loadbalancers
 
-  ip_id = scaleway_lb_ip.this[each.key].id
+  ip_id = each.value.create_ip ? scaleway_lb_ip.this[each.key].id : data.scaleway_lb_ip.this[each.key].id
   name  = lookup(each.value, "name", null)
 
   type = upper(each.value["type"])

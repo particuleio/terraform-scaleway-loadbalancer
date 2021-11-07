@@ -1,5 +1,5 @@
 module "loadbalancers" {
-  source = "../"
+  source = "../../"
 
   loadbalancers = {
     default = {
