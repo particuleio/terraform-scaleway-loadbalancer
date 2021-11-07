@@ -9,13 +9,17 @@ output "this" {
         for backend in config.backends :
         scaleway_lb_backend.this["${loadbalancer}_${backend.name}"]
       ]
+      frontends = [
+        for frontend in config.frontends :
+        scaleway_lb_frontend.this["${loadbalancer}_${frontend.name}"]
+      ]
       certificates = [
         for certificate in config.certificates :
         scaleway_lb_certificate.this["${loadbalancer}_${certificate.name}"]
       ]
     }
   }
-  description = "Map of every Load Balancer configuration: LBs, LB IPs, Backends, Certificates"
+  description = "Map of every Load Balancer configuration: LBs, LB IPs, Backends, Frontends, Certificates"
 }
 
 output "loadbalancers" {
@@ -26,4 +30,9 @@ output "loadbalancers" {
 output "loadbalancer_backends" {
   value       = scaleway_lb_backend.this
   description = "The Scaleway Load Balancer Backends"
+}
+
+output "loadbalancer_frontends" {
+  value       = scaleway_lb_frontend.this
+  description = "The Scaleway Load Balancer Frontends"
 }

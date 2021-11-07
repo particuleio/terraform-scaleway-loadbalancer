@@ -44,3 +44,35 @@ resource "scaleway_lb_backend" "this" {
 
   # TODO: Add Healthcheck support
 }
+
+resource "scaleway_lb_frontend" "this" {
+  for_each = {
+    for frontend in local.frontends : "${frontend.loadbalancer}_${frontend.name}" => frontend
+  }
+
+  lb_id      = scaleway_lb.this[each.value.loadbalancer].id
+  backend_id = scaleway_lb_backend.this["${each.value.loadbalancer}_${each.value.config.backend_name}"].id
+  name       = each.value.name
+
+  inbound_port   = each.value.config.inbound_port
+  timeout_client = lookup(each.value.config, "timeout_client", null)
+
+  # NOTE: Ensure this property is working as expected when setting up a LB with certificate support
+  certificate_id = lookup(each.value.config, "certificate_name", null) != null ? scaleway_lb_certificate.this["${each.value.loadbalancer}_${each.value.config.certificate_name}"].id : null
+
+  dynamic "acl" {
+    for_each = lookup(each.value.config, "acls", [])
+
+    content {
+      action {
+        type = acl.value.action_type
+      }
+      match {
+        ip_subnet         = lookup(acl.value.match, "ip_subnet", null)
+        http_filter       = lookup(acl.value.match, "http_filter", null)
+        http_filter_value = lookup(acl.value.match, "http_filter_value", null)
+        invert            = lookup(acl.value.match, "invert", false)
+      }
+    }
+  }
+}

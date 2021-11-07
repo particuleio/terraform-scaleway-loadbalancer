@@ -3,6 +3,7 @@ locals {
     type      = "LB-S"
     tags      = []
     backends  = []
+    frontends = []
     create_ip = true
     ip        = {}
 
@@ -20,6 +21,15 @@ locals {
         name         = backend.name
         loadbalancer = name
         config       = backend
+      }
+    ]
+  ])
+  frontends = flatten([
+    for name, config in local.loadbalancers : [
+      for frontend in config.frontends : {
+        name         = frontend.name
+        loadbalancer = name
+        config       = frontend
       }
     ]
   ])
