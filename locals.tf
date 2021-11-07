@@ -5,6 +5,8 @@ locals {
     backends  = []
     create_ip = true
     ip        = {}
+
+    certificates = []
   }
 
   loadbalancers = {
@@ -18,6 +20,15 @@ locals {
         name         = backend.name
         loadbalancer = name
         config       = backend
+      }
+    ]
+  ])
+  certificates = flatten([
+    for name, config in local.loadbalancers : [
+      for certificate in config.certificates : {
+        name         = certificate.name
+        loadbalancer = name
+        config       = certificate
       }
     ]
   ])
