@@ -57,7 +57,9 @@ resource "scaleway_lb_frontend" "this" {
   inbound_port   = each.value.config.inbound_port
   timeout_client = lookup(each.value.config, "timeout_client", null)
 
-  # TODO: Add Certificate support
+  # NOTE: Ensure this property is working as expected when setting up a LB with certificate support
+  certificate_id = lookup(each.value.config, "certificate_name", null) != null ? scaleway_lb_certificate.this["${each.value.loadbalancer}_${each.value.config.certificate_name}"].id : null
+
   dynamic "acl" {
     for_each = lookup(each.value.config, "acls", [])
 
