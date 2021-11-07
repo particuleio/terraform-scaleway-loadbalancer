@@ -44,3 +44,19 @@ resource "scaleway_lb_backend" "this" {
 
   # TODO: Add Healthcheck support
 }
+
+resource "scaleway_lb_frontend" "this" {
+  for_each = {
+    for frontend in local.frontends : "${frontend.loadbalancer}_${frontend.name}" => frontend
+  }
+
+  lb_id      = scaleway_lb.this[each.value.loadbalancer].id
+  backend_id = scaleway_lb_backend.this["${each.value.loadbalancer}_${each.value.config.backend_name}"].id
+  name       = each.value.name
+
+  inbound_port   = each.value.config.inbound_port
+  timeout_client = lookup(each.value.config, "timeout_client", null)
+
+  # TODO: Add ACL support
+  # TODO: Add Certificate support
+}

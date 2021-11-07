@@ -12,6 +12,13 @@ module "loadbalancers" {
           forward_protocol = "http"
         }
       ]
+      frontends = [
+        {
+          name         = "sample-frontend"
+          inbound_port = 80
+          backend_name = "sample-test"
+        }
+      ]
     }
   }
 }
