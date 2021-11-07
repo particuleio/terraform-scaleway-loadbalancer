@@ -9,9 +9,13 @@ output "this" {
         for backend in config.backends :
         scaleway_lb_backend.this["${loadbalancer}_${backend.name}"]
       ]
+      certificates = [
+        for certificate in config.certificates :
+        scaleway_lb_certificate.this["${loadbalancer}_${certificate.name}"]
+      ]
     }
   }
-  description = "Map of every Load Balancer configuration: LBs, LB IPs, Backends"
+  description = "Map of every Load Balancer configuration: LBs, LB IPs, Backends, Certificates"
 }
 
 output "loadbalancers" {

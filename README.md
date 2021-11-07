@@ -31,6 +31,7 @@ No modules.
 |------|------|
 | [scaleway_lb.this](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/lb) | resource |
 | [scaleway_lb_backend.this](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/lb_backend) | resource |
+| [scaleway_lb_certificate.this](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/lb_certificate) | resource |
 | [scaleway_lb_ip.this](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/lb_ip) | resource |
 | [scaleway_lb_ip.this](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/data-sources/lb_ip) | data source |
 
@@ -48,5 +49,5 @@ No modules.
 |------|-------------|
 | <a name="output_loadbalancer_backends"></a> [loadbalancer\_backends](#output\_loadbalancer\_backends) | The Scaleway Load Balancer Backends |
 | <a name="output_loadbalancers"></a> [loadbalancers](#output\_loadbalancers) | The Scaleway Load Balancer resources |
-| <a name="output_this"></a> [this](#output\_this) | Map of every Load Balancer configuration: LBs, LB IPs, Backends |
+| <a name="output_this"></a> [this](#output\_this) | Map of every Load Balancer configuration: LBs, LB IPs, Backends, Certificates |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
