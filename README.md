@@ -32,6 +32,7 @@ No modules.
 | [scaleway_lb.this](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/lb) | resource |
 | [scaleway_lb_backend.this](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/lb_backend) | resource |
 | [scaleway_lb_ip.this](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/lb_ip) | resource |
+| [scaleway_lb_ip.this](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/data-sources/lb_ip) | data source |
 
 ## Inputs
 

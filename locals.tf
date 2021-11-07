@@ -1,8 +1,10 @@
 locals {
   default_loadbalancer = {
-    type     = "LB-S"
-    tags     = []
-    backends = []
+    type      = "LB-S"
+    tags      = []
+    backends  = []
+    create_ip = true
+    ip        = {}
   }
 
   loadbalancers = {
