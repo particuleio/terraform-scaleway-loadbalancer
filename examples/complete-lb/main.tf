@@ -17,6 +17,16 @@ module "loadbalancers" {
           name         = "sample-frontend"
           inbound_port = 80
           backend_name = "sample-test"
+          acls = [
+            {
+              action_type = "deny"
+              match = {
+                ip_subnet         = ["51.51.51.51"]
+                http_filter       = "regex"
+                http_filter_value = ["^foo*bar$"]
+              }
+            }
+          ]
         }
       ]
     }

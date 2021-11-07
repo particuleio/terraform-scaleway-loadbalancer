@@ -57,6 +57,20 @@ resource "scaleway_lb_frontend" "this" {
   inbound_port   = each.value.config.inbound_port
   timeout_client = lookup(each.value.config, "timeout_client", null)
 
-  # TODO: Add ACL support
   # TODO: Add Certificate support
+  dynamic "acl" {
+    for_each = lookup(each.value.config, "acls", [])
+
+    content {
+      action {
+        type = acl.value.action_type
+      }
+      match {
+        ip_subnet         = lookup(acl.value.match, "ip_subnet", null)
+        http_filter       = lookup(acl.value.match, "http_filter", null)
+        http_filter_value = lookup(acl.value.match, "http_filter_value", null)
+        invert            = lookup(acl.value.match, "invert", false)
+      }
+    }
+  }
 }
