@@ -9,7 +9,7 @@ This module creates and configures the following resources:
 - [Scaleway Load Balancer IPs][scw-lb-ip]
 - [Scaleway Load Balancer Certificates][scw-lb-certs]
 - [Scaleway Load Balancer Frontends][scw-lb-f]
-- [Scaleway Load Balancer Bakcends][scw-lb-b]
+- [Scaleway Load Balancer Backends][scw-lb-b]
 
 [scw-lb-main]: https://www.scaleway.com/en/load-balancer/
 [scw-lb]: https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/lb
